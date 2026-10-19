@@ -1,0 +1,11 @@
+KSM — Dependency fix
+=====================
+
+Fixed :app:checkDebugDuplicateClasses by excluding the obsolete
+org.jetbrains.kotlin:kotlin-stdlib-jdk7 and kotlin-stdlib-jdk8 modules
+from all configurations. Their JDK extension classes are already included
+in kotlin-stdlib 1.8.22, so the old 1.6.21 modules caused duplicate classes.
+
+GitHub Actions workflow remains configured to build with Java 17 and Gradle 8.13.
+After uploading this ZIP's contents to the ksm repository, run the Android Build
+workflow. The APK is published as the ksm-debug artifact when the build succeeds.

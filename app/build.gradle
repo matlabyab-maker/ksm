@@ -15,3 +15,12 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
 }
+
+
+// Fix duplicate Kotlin JDK extension classes when older transitive dependencies
+// bring kotlin-stdlib-jdk7/jdk8 1.6.21 alongside kotlin-stdlib 1.8.22.
+// Since Kotlin 1.8, these JDK extensions are included in kotlin-stdlib.
+configurations.configureEach {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
